@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test App</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 480px; margin: 4rem auto; color: #1a1a1a; }
+    h1 { font-size: 1.25rem; }
+    p { color: #555; }
+    .options { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+    a.option {
+      display: block; padding: 0.9rem; font-size: 1rem; font-weight: 600; text-align: center;
+      background: #111; color: #fff; border-radius: 8px; text-decoration: none;
+    }
+    a.option:hover { background: #333; }
+    a.option.secondary { background: #eee; color: #111; }
+    a.option.secondary:hover { background: #ddd; }
+  </style>
+</head>
+<body>
+  <h1>Choose checkout flow</h1>
+  <p>Pick which type of payment intent to create before heading to the cart.</p>
+  <div class="options">
+    <a class="option" href="{{ url_for('cart', mode='regular') }}">Regular checkout</a>
+    <a class="option secondary" href="{{ url_for('cart', mode='mit') }}">MIT checkout</a>
+  </div>
+</body>
+</html>

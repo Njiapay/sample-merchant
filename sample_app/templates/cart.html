@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Checkout</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 480px; margin: 4rem auto; color: #1a1a1a; }
+    h1 { font-size: 1.25rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    td { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+    td:last-child { text-align: right; }
+    tfoot td { border-bottom: none; font-weight: 600; padding-top: 1rem; }
+    button {
+      width: 100%; padding: 0.9rem; font-size: 1rem; font-weight: 600;
+      background: #111; color: #fff; border: none; border-radius: 8px; cursor: pointer;
+    }
+    button:hover { background: #333; }
+  </style>
+</head>
+<body>
+  <h1>Your cart <small style="font-weight: 400; color: #888;">({{ "MIT" if mode == "mit" else "Regular" }})</small></h1>
+  <table>
+    <tbody>
+      {% for item in cart.line_items %}
+      <tr>
+        <td>{{ item.name }} &times; {{ item.quantity }}</td>
+        <td>{{ "%.2f"|format(item.price * item.quantity) }} {{ cart.currency }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total</td>
+        <td>{{ "%.2f"|format(total) }} {{ cart.currency }}</td>
+      </tr>
+    </tfoot>
+  </table>
+  <form method="post" action="{{ url_for('checkout', mode=mode) }}">
+    <button type="submit">Pay now</button>
+  </form>
+</body>
+</html>
