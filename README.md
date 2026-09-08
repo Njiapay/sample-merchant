@@ -3,6 +3,8 @@
 Welcome to the NjiaPay Sample Merchant application!  
 You can use this sample application as a spring board to get your application up and running with NjiaPay.
 
+For full documentation on getting up and running on NjiaPay visit our [developer docs](https://docs.njiapay.com/)!
+
 ## Getting Started
 
 ### Prerequisites
